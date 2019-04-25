@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MasterKaryawanActivity">
 
+
+    <ListView
+        android:layout_width="401dp"
+        android:layout_height="328dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-5dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add User"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="349dp" />
+
 </android.support.constraint.ConstraintLayout>
