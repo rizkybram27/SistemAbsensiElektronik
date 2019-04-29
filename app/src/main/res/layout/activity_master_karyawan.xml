@@ -6,19 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MasterKaryawanActivity">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ListView
-        android:layout_width="401dp"
-        android:layout_height="328dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-5dp" />
+        <ListView
+            android:layout_width="401dp"
+            android:layout_height="328dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-5dp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add User"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="349dp" />
-
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="61dp"
+            android:text="Add User"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="349dp" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

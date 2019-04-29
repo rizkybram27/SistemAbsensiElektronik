@@ -4,130 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".AddKaryawanActivity"
     tools:layout_editor_absoluteY="81dp">
+
+    <Spinner
+        android:id="@+id/spinnerJob"
+        android:layout_width="216dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/editPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDepartment" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="16dp"
-        android:text="Add User"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:layout_marginTop="5dp"
+        android:text="Add Karyawan"
+        app:layout_constraintBottom_toTopOf="@+id/editFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editFirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/editLast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editLast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintBottom_toTopOf="@+id/editNik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editFirst" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editNik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="NIK"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText5"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintBottom_toTopOf="@+id/editEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editLast" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/editEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editText6"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintBottom_toTopOf="@+id/editPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNik" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/editPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Phone"
+        android:hint="Phone Number"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/departement_spinner"
-        app:layout_constraintStart_toStartOf="@+id/departement_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
-
-    <Spinner
-        android:id="@+id/departement_spinner"
-        android:layout_width="215dp"
-        android:layout_height="0dp"
-        android:hint="Departement"
-        app:layout_constraintBottom_toTopOf="@+id/job_spinner"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerDepartment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
 
     <Spinner
-        android:id="@+id/job_spinner"
+        android:id="@+id/spinnerDepartment"
         android:layout_width="215dp"
         android:layout_height="0dp"
-        android:hint="Departement"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerJob"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/departement_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/editPhone" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editPassword"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editText8"
-        app:layout_constraintStart_toStartOf="@+id/job_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/job_spinner" />
+        app:layout_constraintBottom_toTopOf="@+id/editPassword2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerJob" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/editPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="59dp"
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/editText7"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+    <Button
+        android:id="@+id/buttonAddKaryawan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
