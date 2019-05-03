@@ -4,48 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/buttonMasterKaryawan"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="290dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="20dp"
         android:text="Master Karyawan"
-        app:layout_constraintEnd_toEndOf="@+id/buttonAbsen"
-        app:layout_constraintStart_toStartOf="@+id/buttonAbsen"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signedin_userid" />
 
     <Button
         android:id="@+id/buttonAbsen"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
         android:text="Absen"
-        app:layout_constraintEnd_toEndOf="@+id/buttonNotification"
-        app:layout_constraintStart_toStartOf="@+id/buttonNotification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonMasterKaryawan" />
 
     <Button
         android:id="@+id/buttonNotification"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="47dp"
         android:text="Notification"
-        app:layout_constraintEnd_toEndOf="@+id/buttonEditProfile"
-        app:layout_constraintStart_toStartOf="@+id/buttonEditProfile"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAbsen" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonAbsen" />
 
     <Button
         android:id="@+id/buttonEditProfile"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
         android:text="Edit Profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,21 +57,29 @@
         android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
         android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEditProfile" />
 
     <TextView
-        android:id="@+id/textUsername"
+        android:id="@+id/signedin_userid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginBottom="45dp"
-        android:text="Hello, "
-        app:layout_constraintBottom_toTopOf="@+id/buttonMasterKaryawan"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="3dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/signedin_username"
+        app:layout_constraintTop_toBottomOf="@+id/signedin_username" />
+
+    <TextView
+        android:id="@+id/signedin_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="75dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
