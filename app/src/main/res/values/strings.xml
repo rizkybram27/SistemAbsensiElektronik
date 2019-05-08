@@ -2,17 +2,6 @@
     <string name="app_name">Sistem Absensi Elektronik</string>
     <!--<?xml version="1.0" encoding="utf-8"?>-->
 
-    <string-array name="departement_array">
-        <item>IT</item>
-        <item>Keuangan</item>
-        <item>Support</item>
-        <item>Operation</item>
-    </string-array>
-
-    <string-array name="job_array">
-        <item>IT</item>
-        <item>Keuangan</item>
-        <item>Support</item>
-        <item>Operation</item>
-    </string-array>
 </resources>
+
+

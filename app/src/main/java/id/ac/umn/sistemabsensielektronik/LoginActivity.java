@@ -1,80 +1,91 @@
+//CLEAR (05/06/2019)
 package id.ac.umn.sistemabsensielektronik;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.ErrorCodes;
-import com.firebase.ui.auth.IdpResponse;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-
-    private static int REQUEST_CODE = 101;
-
-    private FirebaseAuth auth;
-
-    private List<AuthUI.IdpConfig> getProviderList() {
-        List<AuthUI.IdpConfig> providers = new ArrayList<>();
-
-        providers.add(
-                new AuthUI.IdpConfig.EmailBuilder().build()
-        );
-
-        return providers;
-    }
-
-    private void authenticateUser() {
-        startActivityForResult(
-                AuthUI.getInstance().createSignInIntentBuilder()
-                        .setAvailableProviders(getProviderList())
-                        .setIsSmartLockEnabled(false)
-                        .build(),
-                REQUEST_CODE
-        );
-    }
+    private EditText inputEmail, inputPassword;
+    private FirebaseAuth FirebaseAuth;
+    private ProgressBar progressBar;
+    private Button buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        auth = FirebaseAuth.getInstance();
-
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-        } else {
-            authenticateUser();
+        //Get FirebaseAuth instance:
+        FirebaseAuth = FirebaseAuth.getInstance();
+        if (FirebaseAuth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
         }
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        //Variables declaration:
+        inputEmail = (EditText) findViewById(R.id.inputEmail);
+        inputPassword = (EditText) findViewById(R.id.inputPassword);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
-        IdpResponse response = IdpResponse.fromResultIntent(data);
+        //If buttonLogin is clicked:
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String email = inputEmail.getText().toString();
+                final String password = inputPassword.getText().toString();
 
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                return;
+                //If email is empty:
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //If password is empty:
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //ProgressBar declaration:
+                progressBar.setVisibility(View.VISIBLE);
+
+                //Authenticate user:
+                FirebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                /*If sign in fails, display a message to the user. If sign in succeeds
+                                the auth state listener will be notified and logic to handle the
+                                signed in user can be handled in the listener.*/
+                                progressBar.setVisibility(View.GONE);
+                                if (!task.isSuccessful()) {
+                                    //The password must be contain 6 letters or more:
+                                    if (inputPassword.length() < 6) {
+                                        Toast.makeText(LoginActivity.this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Authentication failed, check your email and password or contact your admin.", Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
             }
-        }
-        else{
-            if(response == null){
-                return;
-            }
-            if(response.getError().getErrorCode() == ErrorCodes.NO_NETWORK){
-                return;
-            }
-            if(response.getError().getErrorCode() == ErrorCodes.UNKNOWN_ERROR){
-                return;
-            }
-        }
+        });
     }
 }
