@@ -30,7 +30,7 @@ public class MasterKaryawanActivity extends AppCompatActivity {
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MasterKaryawanActivity.this, AddKaryawanActivity.class);
+                Intent intent = new Intent(MasterKaryawanActivity.this, ViewKaryawanActivity.class);
                 startActivity(intent);
             }
         });
