@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "965021831764",
+    "firebase_url": "https://sistemabsenelektronik-7b28d.firebaseio.com",
+    "project_id": "sistemabsenelektronik-7b28d",
+    "storage_bucket": "sistemabsenelektronik-7b28d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965021831764:android:305be5a2a787ed21",
+        "android_client_info": {
+          "package_name": "id.ac.umn.sistemabsensielektronik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965021831764-6ee0jrauh7dmj0cl2jd257qeel6edskp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.ac.umn.sistemabsensielektronik",
+            "certificate_hash": "b39026da116ec41de1df2597a2b3a1f184f0b6f3"
+          }
+        },
+        {
+          "client_id": "965021831764-pj17mc2rgo9aiaepqbjssji738534fvm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrIh9wsLDk1ZZgMUXKD2D--YK3g6h3OHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965021831764-pj17mc2rgo9aiaepqbjssji738534fvm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
