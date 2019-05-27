@@ -2,22 +2,34 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:layout_editor_absoluteY="81dp">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewKaryawan"
+        android:layout_width="311dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonViewKaryawan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:text="View"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/buttonBack"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewKaryawan" />
 
     <Button
         android:id="@+id/buttonBack"
@@ -26,5 +38,7 @@
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewKaryawan" />
+
 </android.support.constraint.ConstraintLayout>

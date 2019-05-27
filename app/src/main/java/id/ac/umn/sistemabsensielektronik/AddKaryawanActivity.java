@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -20,11 +19,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class AddKaryawanActivity extends AppCompatActivity {
 
     Button buttonAddKaryawan;
     EditText editFirstName, editLastName, editEmail, editNIK, editDivision;
     ProgressBar progressBar;
+    ArrayList<DataKaryawan> dataKaryawan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,19 +36,13 @@ public class AddKaryawanActivity extends AppCompatActivity {
         //Input:
         editFirstName = (EditText) findViewById(R.id.inputFirstName);
         editLastName = (EditText) findViewById(R.id.inputLastName);
-        editEmail = (EditText) findViewById(R.id.inputEmail);
+        editEmail = (EditText) findViewById(R.id.registerEmail);
         editNIK = (EditText) findViewById(R.id.inputNIK);
         editDivision = (EditText) findViewById(R.id.inputDivision);
         buttonAddKaryawan = (Button) findViewById(R.id.buttonAddKaryawan);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        dataKaryawan = new ArrayList<DataKaryawan>();
 
-        /*
-        final String getFirstName = editFirstName.getText().toString();
-        final String getLastName = editLastName.getText().toString();
-        final String getEmail = editEmail.getText().toString();
-        final String getNIK = editNIK.getText().toString();
-        final String getDivision = editDivision.getText().toString();
-        */
 
         //If buttonAddKaryawan is clicked:
         buttonAddKaryawan.setOnClickListener(new View.OnClickListener() {
@@ -69,49 +65,37 @@ public class AddKaryawanActivity extends AppCompatActivity {
                 firstName = editFirstName.getText().toString();
                 lastName = editLastName.getText().toString();
 
-                if(TextUtils.isEmpty(firstName)){
+                if (TextUtils.isEmpty(firstName)) {
                     Toast.makeText(getApplicationContext(), "Masukkan nama yang akan diregistrasikan.", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(TextUtils.isEmpty(lastName)){
+                if (TextUtils.isEmpty(lastName)) {
                     Toast.makeText(getApplicationContext(), "Jika tidak memiliki nama belakang, harap mengisi dengan tanda '-'.", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Kolom alamat email wajib diisi.", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(TextUtils.isEmpty(NIK)){
+                if (TextUtils.isEmpty(NIK)) {
                     Toast.makeText(getApplicationContext(), "Harap mengisi kolom NIK.", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(TextUtils.isEmpty(division)){
+                if (TextUtils.isEmpty(division)) {
                     Toast.makeText(getApplicationContext(), "Harap mengisi kolom Division.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                databaseReference = database.getReference("/data/karyawan/" + NIK + "/NIK");
-                databaseReference.setValue(NIK);
+                //There's still a bug, must fill in order. To pass the value from local DataKaryawan to Firebase:
+                /*dataKaryawan = new ArrayList<DataKaryawan>();*/
+                DataKaryawan dataKaryawan = new DataKaryawan(
+                        firstName,
+                        lastName,
+                        email,
+                        division,
+                        NIK
+                );
 
-                databaseReference = database.getReference("/data/karyawan/" + NIK + "/email");
-                databaseReference.setValue(email);
-
-                databaseReference = database.getReference("/data/karyawan/" + NIK + "/firstname");
-                databaseReference.setValue(firstName);
-
-                databaseReference = database.getReference("/data/karyawan/" + NIK + "/lastname");
-                databaseReference.setValue(lastName);
-
-                databaseReference = database.getReference("/data/karyawan/" + NIK + "/division");
-                databaseReference.setValue(division);
-
-                progressBar.setVisibility(View.GONE);
-
-                Intent intent = new Intent(AddKaryawanActivity.this, MasterKaryawanActivity.class);
-                startActivity(intent);
-            }
-
-                /*
                 //Completion Listener, handling error Firebase:
                 DatabaseReference.CompletionListener completionListener = new DatabaseReference.CompletionListener(){
                     @Override
@@ -122,7 +106,18 @@ public class AddKaryawanActivity extends AppCompatActivity {
                             Log.d("DATABASE ERROR", "Database Error!");
                         }
                     }
-                };*/
+                };
+
+                databaseReference = database.getReference("/data/karyawan/" + NIK);
+                databaseReference.setValue(dataKaryawan);
+
+                Intent intent = new Intent(AddKaryawanActivity.this, MasterKaryawanActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+
         });
     }
+
 }

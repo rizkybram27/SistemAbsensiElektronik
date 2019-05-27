@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,12 +23,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth FirebaseAuth;
     private ProgressBar progressBar;
-    private Button buttonLogin;
+    private Button buttonLogin, buttonRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Log.d("debug", "Login Test:");
 
         //Get FirebaseAuth instance:
         FirebaseAuth = FirebaseAuth.getInstance();
@@ -41,13 +44,22 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        buttonRegister = (Button) findViewById(R.id.buttonRegister);
+
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //If buttonLogin is clicked:
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                String email = inputEmail.getText().toString();
+                String password = inputPassword.getText().toString();
 
                 //If email is empty:
                 if (TextUtils.isEmpty(email)) {

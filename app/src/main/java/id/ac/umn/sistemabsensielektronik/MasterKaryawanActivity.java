@@ -3,6 +3,7 @@ package id.ac.umn.sistemabsensielektronik;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ public class MasterKaryawanActivity extends AppCompatActivity {
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("debug", "Masuk ke activity ViewKaryawan...");
                 Intent intent = new Intent(MasterKaryawanActivity.this, ViewKaryawanActivity.class);
                 startActivity(intent);
             }
@@ -39,6 +41,7 @@ public class MasterKaryawanActivity extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("debug", "Masuk ke activity AddKaryawan...");
                 Intent intent = new Intent(MasterKaryawanActivity.this, AddKaryawanActivity.class);
                 startActivity(intent);
             }
@@ -48,7 +51,8 @@ public class MasterKaryawanActivity extends AppCompatActivity {
         buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MasterKaryawanActivity.this, AddKaryawanActivity.class);
+                Log.d("debug", "Masuk ke activity UpdateKaryawan...");
+                Intent intent = new Intent(MasterKaryawanActivity.this, UpdateKaryawanActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +61,8 @@ public class MasterKaryawanActivity extends AppCompatActivity {
         buttonRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MasterKaryawanActivity.this, AddKaryawanActivity.class);
+                Log.d("debug", "Masuk ke activity RemoveKaryawan...");
+                Intent intent = new Intent(MasterKaryawanActivity.this, DeleteKaryawanActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,6 +73,7 @@ public class MasterKaryawanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MasterKaryawanActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

@@ -24,7 +24,10 @@
         </activity>
         <activity android:name=".AddKaryawanActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ViewKaryawanActivity"></activity>
+        <activity android:name=".ViewKaryawanActivity" />
+        <activity android:name=".UpdateKaryawanActivity" />
+        <activity android:name=".DeleteKaryawanActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
